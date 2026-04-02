@@ -1,17 +1,24 @@
 # Teardrop Anomaly Analysis
 
-R script simulating a teardrop IP fragment attack from Wireshark's teardrop.cap capture.  
-Duplicated packets 200x to mimic a flood, then visualized spikes in ggplot2—red dots flag the chaos.
+R-powered simulation & visualization of a classic **Teardrop IP fragment attack**—the old-school DoS that crashes systems with overlapping fragments.
 
-! (teardrop_anomaly_plot.png)
+! (teardrop_anomaly_plot.png)  
+*Spikes in packet length over time—red dots scream "attack!"*
 
-**What it shows:**  
-- Original 18-packet data → fake attack bursts over 60 seconds  
-- Time-series plot: length vs time, anomalies highlighted  
-- Ties cyber vuln detection to data viz—perfect for threat hunting.
+## What this does
 
-Skills: Wireshark export, dplyr/ggplot2 EDA, anomaly simulation.
+- Starts with real Wireshark capture: `teardrop.cap` (just 18 packets)
+- Duplicates them **200×** to fake a 60-second flood
+- Runs quick EDA with `dplyr` + `ggplot2`
+- Plots packet length vs. time, flags anomalies in **red**
 
-Files:  
-- teardrop_anomaly_analysis.R → full script  
-- teardrop_anomaly_plot.png → output viz
+Perfect demo for: threat hunting, teaching network anomalies, or showing how data viz beats blind log scrolling.
+
+## Why it matters
+
+Teardrop attacks exploit bad reassembly—modern firewalls catch them, but spotting patterns in raw traffic? That's still gold. This bridges packet-level chaos to visual insight.
+
+## Quick run (one-liner)
+
+```bash
+Rscript teardrop_anomaly_analysis.R
